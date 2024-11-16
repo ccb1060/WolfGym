@@ -13,29 +13,25 @@ public class NewsManager : MonoBehaviour
 
     //The blueprint for the article
     [SerializeField] GameObject articlePrefab;
-    //The current article being displayed to the player
-    NewsController article;
-    //How long the player has until the article changes
-    [SerializeField]float timeUntilChange = 0;
-
-    [SerializeField] GameObject progressBar;
-    float maxtime = 0;
-
-    //The player's current score
-    [SerializeField] int playerScore = 0;
+    //The current prompt being displayed to the player
+    NewsController prompt;
 
     //All possible articles
     string[] articleList;
 
+    //the current post being worked on
+    string[] post;
+
+    string input = "";
+
     // Start is called before the first frame update
     void Start()
     {
-        maxtime = 5;
-        timeUntilChange = 5;
+        
 
         //Create the article and move it to the correct position
-        article = Instantiate(articlePrefab).GetComponent<NewsController>();
-        article.gameObject.transform.position = new Vector3(-6,1,0);
+        prompt = Instantiate(articlePrefab).GetComponent<NewsController>();
+        prompt.gameObject.transform.position = new Vector3(-6,1,0);
 
         //Put the articles from the text file into the array
         StreamReader reader = new StreamReader(Application.dataPath+"/TextFiles/Articles.txt");
@@ -44,45 +40,34 @@ public class NewsManager : MonoBehaviour
         articleList = contents.Split('|');
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(timeUntilChange < 0)
-        {
-            changeArticle();
-            maxtime = 5 - playerScore/10;
-            timeUntilChange = maxtime;
-        }
-
-        progressBar.GetComponent<UnityEngine.UI.Image>().fillAmount = timeUntilChange/maxtime;
-        progressBar.GetComponent<UnityEngine.UI.Image>().color = new Color( (1 - timeUntilChange / maxtime), 255, 0);
-        timeUntilChange -= Time.deltaTime;
-
-    }
-
-    void changeArticle()
+    public void changeArticle()
     {
         //Picks a random article from the list, rerolling if it gets the same one
-        string[] text;
         do
         {
-            text = articleList[Random.Range(1, articleList.Length - 1)].Split(';');
+            post = articleList[Random.Range(1, articleList.Length - 1)].Split(';');
         }
-        while (text[0].Equals(article.headText.text));
+        while (post[0].Equals(prompt.headText.text));
 
-        updatePost(text);
+        prompt.headText.text = post[0];
+        updatePost(post, "");
         
     }
 
-    void updatePost(string[] text)
+    void updatePost(string[] text, string input)
     {
-        article.headText.text = text[0];
         string[] bodyParts = text[1].Split('_');
         string bodyWhole = bodyParts[0];
         for (int i = 1; i < bodyParts.Length; i++)
         {
-            bodyWhole += "<color=red>" + BuzzwordsManager.PickTopical() + "</color>" + bodyParts[i];
+            if(input == "")
+                bodyWhole += "<color=red>_</color>" + bodyParts[i];
+            else
+            {
+                bodyWhole += "<color=purple>" + input + "</color>"+bodyParts[i];
+            }
         }
-        article.bodyText.text = bodyWhole;
+        prompt.bodyText.text = bodyWhole;
+        text[1] = bodyWhole;
     }
 }
