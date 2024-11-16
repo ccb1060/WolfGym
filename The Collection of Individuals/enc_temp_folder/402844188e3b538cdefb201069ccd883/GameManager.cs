@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     //The player's current score
     [SerializeField] int playerScore = 0;
 
-    private bool inTutorial;
+    private bool inTutorial
 
     
     // Start is called before the first frame update
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     {
         maxtime = 5;
         timeUntilChange = 5;
-        inTutorial = false;
+        inTutorial = true;
 
         field.onEndEdit.AddListener(delegate { postManager.updatePost(field.text);});
     }
@@ -53,7 +53,6 @@ public class GameManager : MonoBehaviour
         progressBar.GetComponent<UnityEngine.UI.Image>().fillAmount = timeUntilChange / maxtime;
         progressBar.GetComponent<UnityEngine.UI.Image>().color = new Color((1 - timeUntilChange / maxtime), 255, 0);
 
-        if(!inTutorial)
-            timeUntilChange -= Time.deltaTime;
+        timeUntilChange -= Time.deltaTime;
     }
 }
