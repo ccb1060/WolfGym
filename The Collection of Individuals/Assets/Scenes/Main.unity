@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuzzwordsManager
       objectReference: {fileID: 0}
+    - target: {fileID: 253352765880396036, guid: 9ee6ae09546964e45b28efa6a0d578ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1561574329196179345, guid: 9ee6ae09546964e45b28efa6a0d578ad, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2182,7 +2186,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1111788236}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1648497506}
+        m_TargetAssemblyTypeName: CanvasRandomizer, Assembly-CSharp
+        m_MethodName: IncreaseConnections
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 100
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1111788236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3225,7 +3241,6 @@ MonoBehaviour:
   _likes: {fileID: 1984817589}
   _comments: {fileID: 1760927436}
   _pop_hashtags: {fileID: 1545401323}
-  <connections>k__BackingField: 0
 --- !u!114 &1648497507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3742,7 +3757,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Entreprener | Popularity Consultant | Life Expert
+  m_text: 'Media Consultant Intern @ BigMedia\nConnections: 100k'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
