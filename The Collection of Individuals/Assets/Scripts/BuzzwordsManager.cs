@@ -64,17 +64,41 @@ public class BuzzwordsManager : MonoBehaviour
                 {
                     Modern[word] = 3;
                 }
-                return Modern.Keys.ToArray();
-            case 1:
                 foreach (string word in Games.Keys)
                 {
-                    Games[word] = 3;
+                    Modern[word] = -1;
+                }
+                foreach (string word in Computing.Keys)
+                {
+                    Modern[word] = -1;
+                }
+                return Modern.Keys.ToArray();
+            case 1:
+                foreach (string word in Modern.Keys)
+                {
+                    Modern[word] = -1;
+                }
+                foreach (string word in Games.Keys)
+                {
+                    Modern[word] = 3;
+                }
+                foreach (string word in Computing.Keys)
+                {
+                    Modern[word] = -1;
                 }
                 return Games.Keys.ToArray();
             case 2:
+                foreach (string word in Modern.Keys)
+                {
+                    Modern[word] = -1;
+                }
+                foreach (string word in Games.Keys)
+                {
+                    Modern[word] = -1;
+                }
                 foreach (string word in Computing.Keys)
                 {
-                    Computing[word] = 3;
+                    Modern[word] = 3;
                 }
                 return Computing.Keys.ToArray();
         }
