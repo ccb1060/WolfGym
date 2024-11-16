@@ -18,7 +18,7 @@ public class BuzzwordsManager : MonoBehaviour
     private List<WordClass> Health = new List<WordClass>();
     private List<WordClass> Marketing = new List<WordClass>();
     private List<WordClass> Technology = new List<WordClass>();
-    private List<WordClass> Generic = new List<WordClass>();
+    public List<WordClass> Generic = new List<WordClass>();
     public List<WordClass> CurrentTopic = new List<WordClass>();
     StreamReader ListReader;
     public int topicValue = 3;
