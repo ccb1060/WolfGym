@@ -9,56 +9,92 @@ using UnityEngine;
 public class BuzzwordsManager : MonoBehaviour
 {
     //dictionaries to store words and connection values
-    private Dictionary<string, int> Topical = new Dictionary<string, int>();
+    private Dictionary<string, int> Modern = new Dictionary<string, int>();
+    private Dictionary<string, int> Games = new Dictionary<string, int>();
+    private Dictionary<string, int> Computing = new Dictionary<string, int>();
     private Dictionary<string, int> Generic = new Dictionary<string, int>();
-    StreamReader TopicalReader;
+    StreamReader ModernReader;
+    StreamReader GamesReader;
+    StreamReader ComputingReader;
     StreamReader GenericReader;
 
     private void Start()
     {
-        //intialize topical
-        TopicalReader = new StreamReader("Assets\\TextFiles\\Topical.txt");
-        string topicalContent = TopicalReader.ReadToEnd();
-        string[] topicalWords = topicalContent.Split(",");
-        foreach(string word in topicalWords)
+        //intialize modern
+        ModernReader = new StreamReader("Assets\\TextFiles\\Modern.txt");
+        string content = ModernReader.ReadToEnd();
+        string[] words = content.Split(",");
+        foreach(string word in words)
         {
-            Topical.Add(word, -1);
+            Modern.Add(word, -1);
+        }
+        //intialize games
+        GamesReader = new StreamReader("Assets\\TextFiles\\Games.txt");
+        content = GamesReader.ReadToEnd();
+        words = content.Split(",");
+        foreach (string word in words)
+        {
+            Games.Add(word, -1);
+        }
+        //intialize comnputing
+        ComputingReader = new StreamReader("Assets\\TextFiles\\Computing.txt");
+        content = ComputingReader.ReadToEnd();
+        words = content.Split(",");
+        foreach (string word in words)
+        {
+            Computing.Add(word, -1);
         }
         //intialize generic
         GenericReader = new StreamReader("Assets\\TextFiles\\Generic.txt");
-        string genericContent = GenericReader.ReadToEnd();
-        string[] genericWords = genericContent.Split(",");
-        foreach (string word in genericWords)
+        content = GenericReader.ReadToEnd();
+        words = content.Split(",");
+        foreach (string word in words)
         {
             Generic.Add(word, 1);
         }
     }
 
-    //reset topical scores
-    public void ResetTopical()
+    //pick random topic
+    public string[] PickTopic()
     {
-        for(int i = 0; i < Topical.Keys.Count; i++)
+        switch(UnityEngine.Random.Range(0, 3))
         {
-            string temp = Topical.Keys.ToArray()[i];
-            Topical[temp] = -1;
+            case 0:
+                foreach(string word in Modern.Keys)
+                {
+                    Modern[word] = 3;
+                }
+                return Modern.Keys.ToArray();
+            case 1:
+                foreach (string word in Games.Keys)
+                {
+                    Games[word] = 3;
+                }
+                return Games.Keys.ToArray();
+            case 2:
+                foreach (string word in Computing.Keys)
+                {
+                    Computing[word] = 3;
+                }
+                return Computing.Keys.ToArray();
         }
-    }
-
-    //pick random topical
-    public string PickTopical()
-    {
-        string temp = "";
-        temp = Topical.Keys.ToArray()[(int)UnityEngine.Random.Range(0, Topical.Keys.Count - 1)];
-        Topical[temp] = 3;
-        return temp;
+        return new string[0];
     }
 
     //get score
     public int GetScore(string word)
     {
-        if(Topical.ContainsKey(word))
+        if(Modern.ContainsKey(word))
         {
-            return Topical[word];
+            return Modern[word];
+        }
+        else if (Games.ContainsKey(word))
+        {
+            return Games[word];
+        }
+        else if (Computing.ContainsKey(word))
+        {
+            return Computing[word];
         }
         else if(Generic.ContainsKey(word))
         {
