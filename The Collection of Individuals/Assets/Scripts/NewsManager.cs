@@ -35,7 +35,7 @@ public class NewsManager : MonoBehaviour
         article.gameObject.transform.position = new Vector3(-6,1,0);
 
         //Put the articles from the text file into the array
-        StreamReader reader = new StreamReader(Application.dataPath+"/Articles/Articles.txt");
+        StreamReader reader = new StreamReader(Application.dataPath+"/TextFiles/Articles.txt");
         string contents = reader.ReadToEnd();
         reader.Close();
         articleList = contents.Split('|');
