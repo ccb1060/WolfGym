@@ -1224,7 +1224,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46.65
+  m_fontSize: 24.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1379,8 +1379,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aad28de6f16f0c4e81294867dc4990f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BuzzwordsManager: {fileID: 1372787533}
-  articlePrefab: {fileID: 5834144434523173239, guid: 9c18417a18570af469ea217b827f9758, type: 3}
+  buzzwordsManager: {fileID: 1372787533}
+  gameManager: {fileID: 1492242289}
+  postText: {fileID: 379225570}
 --- !u!4 &479339582
 Transform:
   m_ObjectHideFlags: 0
@@ -3026,10 +3027,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   postManager: {fileID: 479339581}
-  field: {fileID: 697479813}
+  field: {fileID: 285970622}
   progressBar: {fileID: 1611097672}
   timeUntilChange: 0
   playerScore: 0
+  buzzwordsManager: {fileID: 1372787533}
 --- !u!4 &1492242290
 Transform:
   m_ObjectHideFlags: 0
@@ -3225,7 +3227,6 @@ MonoBehaviour:
   _likes: {fileID: 1984817589}
   _comments: {fileID: 1760927436}
   _pop_hashtags: {fileID: 1545401323}
-  <connections>k__BackingField: 0
 --- !u!114 &1648497507
 MonoBehaviour:
   m_ObjectHideFlags: 0
