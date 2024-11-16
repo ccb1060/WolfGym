@@ -15,6 +15,9 @@ public class NewsManager : MonoBehaviour
     //How long the player has until the article changes
     [SerializeField]float timeUntilChange = 0;
 
+    [SerializeField] GameObject progressBar;
+    float maxtime = 0;
+
     //The player's current score
     [SerializeField] int playerScore = 0;
 
@@ -24,19 +27,18 @@ public class NewsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        maxtime = 5;
         timeUntilChange = 5;
 
         //Create the article and move it to the correct position
         article = Instantiate(articlePrefab).GetComponent<NewsController>();
         article.gameObject.transform.position = new Vector3(-6,1,0);
 
+        //Put the articles from the text file into the array
         StreamReader reader = new StreamReader(Application.dataPath+"/Articles/Articles.txt");
         string contents = reader.ReadToEnd();
         reader.Close();
-
         articleList = contents.Split(',');
-        
-
     }
 
     // Update is called once per frame
@@ -45,17 +47,27 @@ public class NewsManager : MonoBehaviour
         if(timeUntilChange < 0)
         {
             changeArticle();
-            timeUntilChange = 5 - playerScore/10;
+            maxtime = 5 - playerScore/10;
+            timeUntilChange = maxtime;
         }
 
+        progressBar.GetComponent<UnityEngine.UI.Image>().fillAmount = timeUntilChange/maxtime;
+        progressBar.GetComponent<UnityEngine.UI.Image>().color = new Color( (1 - timeUntilChange / maxtime), 255, 0);
         timeUntilChange -= Time.deltaTime;
 
     }
 
     void changeArticle()
     {
-        playerScore = playerScore + 1;
-        article.UpdateText(articleList[Random.Range(0, articleList.Length - 1)]);
+        //Picks a random article from the list, rerolling if it gets the same one
+        string[] text;
+        do
+        {
+            text = articleList[Random.Range(0, articleList.Length - 1)].Split(';');
+        }
+        while (text[0].Equals(article.headText.text));
         
+        article.headText.text = text[0];
+        article.bodyText.text = text[1]; 
     }
 }
