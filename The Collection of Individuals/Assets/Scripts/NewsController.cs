@@ -6,6 +6,7 @@ using TMPro;
 public class NewsController : MonoBehaviour
 {
     public TMP_Text bodyText;
+    public TMP_Text headText;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +18,10 @@ public class NewsController : MonoBehaviour
     {
     }
 
-    public void UpdateText(string change)
+    public void UpdateText(string article)
     {
-        bodyText.text = change;
+        string[] texts = article.Split(';');
+        headText.text = texts[0];
+        bodyText.text = texts[1];
     }
 }
