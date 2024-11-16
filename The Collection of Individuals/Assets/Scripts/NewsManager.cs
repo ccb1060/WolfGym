@@ -38,7 +38,7 @@ public class NewsManager : MonoBehaviour
         StreamReader reader = new StreamReader(Application.dataPath+"/Articles/Articles.txt");
         string contents = reader.ReadToEnd();
         reader.Close();
-        articleList = contents.Split(',');
+        articleList = contents.Split('|');
     }
 
     // Update is called once per frame
