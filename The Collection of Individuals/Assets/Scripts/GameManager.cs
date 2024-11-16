@@ -23,7 +23,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] float timeUntilChange = 0;
 
     //The player's current score
-    [SerializeField] int playerScore = 0;
+    [SerializeField] public int playerScore = 0;
+
+    //Buzzword manager
+    [SerializeField] BuzzwordsManager buzzwordsManager;
 
     private bool inTutorial;
 
@@ -35,7 +38,11 @@ public class GameManager : MonoBehaviour
         timeUntilChange = 5;
         inTutorial = false;
 
-        field.onEndEdit.AddListener(delegate { postManager.updatePost(field.text);});
+        field.onEndEdit.AddListener(delegate 
+        { 
+            postManager.updatePost(field.text);
+            field.text = "";
+        });
     }
 
     // Update is called once per frame

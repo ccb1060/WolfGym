@@ -19,8 +19,10 @@ public class BuzzwordsManager : MonoBehaviour
     private List<WordClass> Marketing = new List<WordClass>();
     private List<WordClass> Technology = new List<WordClass>();
     private List<WordClass> Generic = new List<WordClass>();
+    public List<WordClass> CurrentTopic = new List<WordClass>();
     StreamReader ListReader;
     public int topicValue = 3;
+    public int genericValue = 1;
     public int irrelevantValue = -1;
 
     private void Start()
@@ -42,7 +44,7 @@ public class BuzzwordsManager : MonoBehaviour
         string[] words = content.Split(",");
         foreach(string word in words)
         {
-            Business.Add(new WordClass(word, 1));
+            Business.Add(new WordClass(word, topicValue));
         }
 
         //intialize Education
@@ -51,7 +53,7 @@ public class BuzzwordsManager : MonoBehaviour
         words = content.Split(",");
         foreach (string word in words)
         {
-            Education.Add(new WordClass(word, 1));
+            Education.Add(new WordClass(word, topicValue));
         }
 
         //intialize Environment
@@ -60,7 +62,7 @@ public class BuzzwordsManager : MonoBehaviour
         words = content.Split(",");
         foreach (string word in words)
         {
-            EnvironmentList.Add(new WordClass(word, 1));
+            EnvironmentList.Add(new WordClass(word, topicValue));
         }
 
         //intialize Finance
@@ -69,7 +71,7 @@ public class BuzzwordsManager : MonoBehaviour
         words = content.Split(",");
         foreach (string word in words)
         {
-            Finance.Add(new WordClass(word, 1));
+            Finance.Add(new WordClass(word, topicValue));
         }
 
         //intialize Games
@@ -78,7 +80,7 @@ public class BuzzwordsManager : MonoBehaviour
         words = content.Split(",");
         foreach (string word in words)
         {
-            Games.Add(new WordClass(word, 1));
+            Games.Add(new WordClass(word, topicValue));
         }
 
         //intialize Health
@@ -87,7 +89,7 @@ public class BuzzwordsManager : MonoBehaviour
         words = content.Split(",");
         foreach (string word in words)
         {
-            Health.Add(new WordClass(word, 1));
+            Health.Add(new WordClass(word, topicValue));
         }
 
         //intialize Marketing
@@ -96,7 +98,7 @@ public class BuzzwordsManager : MonoBehaviour
         words = content.Split(",");
         foreach (string word in words)
         {
-            Marketing.Add(new WordClass(word, 1));
+            Marketing.Add(new WordClass(word, topicValue));
         }
 
         //intialize Technology
@@ -105,7 +107,7 @@ public class BuzzwordsManager : MonoBehaviour
         words = content.Split(",");
         foreach (string word in words)
         {
-            Technology.Add(new WordClass(word, 1));
+            Technology.Add(new WordClass(word, topicValue));
         }
 
         //intialize generic
@@ -114,7 +116,7 @@ public class BuzzwordsManager : MonoBehaviour
         words = content.Split(",");
         foreach (string word in words)
         {
-            Generic.Add(new WordClass(word, 1));
+            Generic.Add(new WordClass(word, genericValue));
         }
     }
 
@@ -123,9 +125,12 @@ public class BuzzwordsManager : MonoBehaviour
     {
         foreach(List<WordClass> list in Lists)
         {
-            for (int i = 0; i < list.Count; i++)
+            if(list != Generic)
             {
-                list[i].value = irrelevantValue;
+                for (int i = 0; i < list.Count; i++)
+                {
+                    list[i].value = irrelevantValue;
+                }
             }
         }
         switch (UnityEngine.Random.Range(0, 8))
@@ -135,48 +140,56 @@ public class BuzzwordsManager : MonoBehaviour
                 {
                     Business[i].value = topicValue;
                 }
+                CurrentTopic = Business;
                 break;
             case 1:
                 for (int i = 0; i < Education.Count; i++)
                 {
                     Education[i].value = topicValue;
                 }
+                CurrentTopic = Education;
                 break;
             case 2:
                 for (int i = 0; i < EnvironmentList.Count; i++)
                 {
                     EnvironmentList[i].value = topicValue;
                 }
+                CurrentTopic = EnvironmentList;
                 break;
             case 3:
                 for (int i = 0; i < Finance.Count; i++)
                 {
                     Finance[i].value = topicValue;
                 }
+                CurrentTopic = Finance;
                 break;
             case 4:
                 for (int i = 0; i < Games.Count; i++)
                 {
                     Games[i].value = topicValue;
                 }
+                CurrentTopic = Games;
                 break;
             case 5:
                 for (int i = 0; i < Health.Count; i++)
                 {
                     Health[i].value = topicValue;
                 }
+                CurrentTopic = Health;
                 break;
             case 6:
                 for (int i = 0; i < Marketing.Count; i++)
                 {
                     Marketing[i].value = topicValue;
                 }
+                CurrentTopic = Marketing;
                 break;
             case 7:
                 for (int i = 0; i < Technology.Count; i++)
                 {
                     Technology[i].value = topicValue;
                 }
+                CurrentTopic = Technology;
                 break;
         }
     }
