@@ -10,7 +10,10 @@ using TMPro;
 public class NewsManager : MonoBehaviour
 {
     //Allow retrieval of random generic/topical buzzwords
-    [SerializeField] BuzzwordsManager BuzzwordsManager;
+    [SerializeField] BuzzwordsManager buzzwordsManager;
+
+    [SerializeField] GameManager gameManager;
+
 
     //The field that displays the text
     [SerializeField] TMP_Text postText;
@@ -44,12 +47,11 @@ public class NewsManager : MonoBehaviour
     {
         //Picks a random article from the list, rerolling if it gets the same one
         post = articleList[Random.Range(1, articleList.Length - 1)].Split(';');
-
+        buzzwordsManager.PickTopic();
         updatePost("");
-        
     }
 
-    public void updatePost( string input)
+    public void updatePost(string input)
     {
         string[] bodyParts = post[1].Split('_');
         string bodyWhole = bodyParts[0];
@@ -59,6 +61,8 @@ public class NewsManager : MonoBehaviour
                 bodyWhole += "<color=red>_</color>" + bodyParts[i];
             else
             {
+                gameManager.playerScore += buzzwordsManager.GetScore(input);
+                buzzwordsManager.Discover(input);
                 bodyWhole += "<color=purple>" + input + "</color>"+bodyParts[i];
                 input = "";
             }

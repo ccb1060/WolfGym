@@ -1148,7 +1148,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46.65
+  m_fontSize: 24.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1574,7 +1574,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aad28de6f16f0c4e81294867dc4990f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BuzzwordsManager: {fileID: 1372787533}
+  buzzwordsManager: {fileID: 1372787533}
+  gameManager: {fileID: 1492242289}
   postText: {fileID: 379225570}
 --- !u!4 &479339582
 Transform:
@@ -2811,6 +2812,7 @@ MonoBehaviour:
   progressBar: {fileID: 2026317057}
   timeUntilChange: 0
   playerScore: 0
+  buzzwordsManager: {fileID: 1372787533}
 --- !u!4 &1492242290
 Transform:
   m_ObjectHideFlags: 0
