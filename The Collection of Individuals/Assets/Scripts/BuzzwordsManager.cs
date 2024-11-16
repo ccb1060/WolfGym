@@ -9,124 +9,206 @@ using UnityEngine;
 public class BuzzwordsManager : MonoBehaviour
 {
     //dictionaries to store words and connection values
-    private Dictionary<string, int> Modern = new Dictionary<string, int>();
-    private Dictionary<string, int> Games = new Dictionary<string, int>();
-    private Dictionary<string, int> Computing = new Dictionary<string, int>();
-    private Dictionary<string, int> Generic = new Dictionary<string, int>();
-    StreamReader ModernReader;
-    StreamReader GamesReader;
-    StreamReader ComputingReader;
-    StreamReader GenericReader;
+    private List<List<WordClass>> Lists = new List<List<WordClass>>();
+    private List<WordClass> Business = new List<WordClass>();
+    private List<WordClass> Education = new List<WordClass>();
+    private List<WordClass> EnvironmentList = new List<WordClass>();
+    private List<WordClass> Finance = new List<WordClass>();
+    private List<WordClass> Games = new List<WordClass>();
+    private List<WordClass> Health = new List<WordClass>();
+    private List<WordClass> Marketing = new List<WordClass>();
+    private List<WordClass> Technology = new List<WordClass>();
+    private List<WordClass> Generic = new List<WordClass>();
+    StreamReader ListReader;
+    public int topicValue = 3;
+    public int irrelevantValue = -1;
 
     private void Start()
     {
-        //intialize modern
-        ModernReader = new StreamReader("Assets\\TextFiles\\Modern.txt");
-        string content = ModernReader.ReadToEnd();
+        //intialize list of lists
+        Lists.Add(Business);
+        Lists.Add(Education);
+        Lists.Add(EnvironmentList);
+        Lists.Add(Finance);
+        Lists.Add(Games);
+        Lists.Add(Health);
+        Lists.Add(Marketing);
+        Lists.Add(Technology);
+        Lists.Add(Generic);
+
+        //intialize Business
+        ListReader = new StreamReader("Assets\\TextFiles\\Business.txt");
+        string content = ListReader.ReadToEnd();
         string[] words = content.Split(",");
         foreach(string word in words)
         {
-            Modern.Add(word, -1);
+            Business.Add(new WordClass(word, 1));
         }
-        //intialize games
-        GamesReader = new StreamReader("Assets\\TextFiles\\Games.txt");
-        content = GamesReader.ReadToEnd();
+
+        //intialize Education
+        ListReader = new StreamReader("Assets\\TextFiles\\Education.txt");
+        content = ListReader.ReadToEnd();
         words = content.Split(",");
         foreach (string word in words)
         {
-            Games.Add(word, -1);
+            Education.Add(new WordClass(word, 1));
         }
-        //intialize comnputing
-        ComputingReader = new StreamReader("Assets\\TextFiles\\Computing.txt");
-        content = ComputingReader.ReadToEnd();
+
+        //intialize Environment
+        ListReader = new StreamReader("Assets\\TextFiles\\Environment.txt");
+        content = ListReader.ReadToEnd();
         words = content.Split(",");
         foreach (string word in words)
         {
-            Computing.Add(word, -1);
+            EnvironmentList.Add(new WordClass(word, 1));
         }
+
+        //intialize Finance
+        ListReader = new StreamReader("Assets\\TextFiles\\Finance.txt");
+        content = ListReader.ReadToEnd();
+        words = content.Split(",");
+        foreach (string word in words)
+        {
+            Finance.Add(new WordClass(word, 1));
+        }
+
+        //intialize Games
+        ListReader = new StreamReader("Assets\\TextFiles\\Games.txt");
+        content = ListReader.ReadToEnd();
+        words = content.Split(",");
+        foreach (string word in words)
+        {
+            Games.Add(new WordClass(word, 1));
+        }
+
+        //intialize Health
+        ListReader = new StreamReader("Assets\\TextFiles\\Health.txt");
+        content = ListReader.ReadToEnd();
+        words = content.Split(",");
+        foreach (string word in words)
+        {
+            Health.Add(new WordClass(word, 1));
+        }
+
+        //intialize Marketing
+        ListReader = new StreamReader("Assets\\TextFiles\\Marketing.txt");
+        content = ListReader.ReadToEnd();
+        words = content.Split(",");
+        foreach (string word in words)
+        {
+            Marketing.Add(new WordClass(word, 1));
+        }
+
+        //intialize Technology
+        ListReader = new StreamReader("Assets\\TextFiles\\Technology.txt");
+        content = ListReader.ReadToEnd();
+        words = content.Split(",");
+        foreach (string word in words)
+        {
+            Technology.Add(new WordClass(word, 1));
+        }
+
         //intialize generic
-        GenericReader = new StreamReader("Assets\\TextFiles\\Generic.txt");
-        content = GenericReader.ReadToEnd();
+        ListReader = new StreamReader("Assets\\TextFiles\\Generic.txt");
+        content = ListReader.ReadToEnd();
         words = content.Split(",");
         foreach (string word in words)
         {
-            Generic.Add(word, 1);
+            Generic.Add(new WordClass(word, 1));
         }
     }
 
     //pick random topic
-    public string[] PickTopic()
+    public void PickTopic()
     {
-        switch(UnityEngine.Random.Range(0, 3))
+        foreach(List<WordClass> list in Lists)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                list[i].value = irrelevantValue;
+            }
+        }
+        switch (UnityEngine.Random.Range(0, 8))
         {
             case 0:
-                foreach(string word in Modern.Keys)
+                for (int i = 0; i < Business.Count; i++)
                 {
-                    Modern[word] = 3;
+                    Business[i].value = topicValue;
                 }
-                foreach (string word in Games.Keys)
-                {
-                    Modern[word] = -1;
-                }
-                foreach (string word in Computing.Keys)
-                {
-                    Modern[word] = -1;
-                }
-                return Modern.Keys.ToArray();
+                break;
             case 1:
-                foreach (string word in Modern.Keys)
+                for (int i = 0; i < Education.Count; i++)
                 {
-                    Modern[word] = -1;
+                    Education[i].value = topicValue;
                 }
-                foreach (string word in Games.Keys)
-                {
-                    Modern[word] = 3;
-                }
-                foreach (string word in Computing.Keys)
-                {
-                    Modern[word] = -1;
-                }
-                return Games.Keys.ToArray();
+                break;
             case 2:
-                foreach (string word in Modern.Keys)
+                for (int i = 0; i < EnvironmentList.Count; i++)
                 {
-                    Modern[word] = -1;
+                    EnvironmentList[i].value = topicValue;
                 }
-                foreach (string word in Games.Keys)
+                break;
+            case 3:
+                for (int i = 0; i < Finance.Count; i++)
                 {
-                    Modern[word] = -1;
+                    Finance[i].value = topicValue;
                 }
-                foreach (string word in Computing.Keys)
+                break;
+            case 4:
+                for (int i = 0; i < Games.Count; i++)
                 {
-                    Modern[word] = 3;
+                    Games[i].value = topicValue;
                 }
-                return Computing.Keys.ToArray();
+                break;
+            case 5:
+                for (int i = 0; i < Health.Count; i++)
+                {
+                    Health[i].value = topicValue;
+                }
+                break;
+            case 6:
+                for (int i = 0; i < Marketing.Count; i++)
+                {
+                    Marketing[i].value = topicValue;
+                }
+                break;
+            case 7:
+                for (int i = 0; i < Technology.Count; i++)
+                {
+                    Technology[i].value = topicValue;
+                }
+                break;
         }
-        return new string[0];
     }
 
     //get score
     public int GetScore(string word)
     {
-        if(Modern.ContainsKey(word))
+        foreach(List<WordClass> list in Lists)
         {
-            return Modern[word];
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].word.Trim().ToUpper().Equals(word.Trim().ToUpper()))
+                {
+                    return list[i].value;
+                }
+            }
         }
-        else if (Games.ContainsKey(word))
+        return 0;
+    }
+
+    //get score
+    public void Discover(string word)
+    {
+        foreach (List<WordClass> list in Lists)
         {
-            return Games[word];
-        }
-        else if (Computing.ContainsKey(word))
-        {
-            return Computing[word];
-        }
-        else if(Generic.ContainsKey(word))
-        {
-            return Generic[word];
-        }
-        else
-        {
-            return 0;
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].word.Trim().ToUpper().Equals(word.Trim().ToUpper()))
+                {
+                    list[i].discovered = true;
+                }
+            }
         }
     }
 }
