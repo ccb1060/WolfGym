@@ -17,12 +17,16 @@ public class NewsManager : MonoBehaviour
     NewsController prompt;
 
     //All possible articles
-    string[] articleList;
+    private string[] articleList;
+
+    public string[] ArticleList
+    {
+        get { return articleList; }
+    }
+
 
     //the current post being worked on
     string[] post;
-
-    string input = "";
 
     // Start is called before the first frame update
     void Start()
@@ -33,11 +37,15 @@ public class NewsManager : MonoBehaviour
         prompt = Instantiate(articlePrefab).GetComponent<NewsController>();
         prompt.gameObject.transform.position = new Vector3(-6,1,0);
 
+        
         //Put the articles from the text file into the array
         StreamReader reader = new StreamReader(Application.dataPath+"/TextFiles/Articles.txt");
         string contents = reader.ReadToEnd();
         reader.Close();
         articleList = contents.Split('|');
+
+        post = articleList[0].Split(';');
+        updatePost("");
     }
 
     public void changeArticle()
@@ -50,13 +58,13 @@ public class NewsManager : MonoBehaviour
         while (post[0].Equals(prompt.headText.text));
 
         prompt.headText.text = post[0];
-        updatePost(post, "");
+        updatePost("");
         
     }
 
-    void updatePost(string[] text, string input)
+    public void updatePost( string input)
     {
-        string[] bodyParts = text[1].Split('_');
+        string[] bodyParts = post[1].Split('_');
         string bodyWhole = bodyParts[0];
         for (int i = 1; i < bodyParts.Length; i++)
         {
@@ -65,9 +73,10 @@ public class NewsManager : MonoBehaviour
             else
             {
                 bodyWhole += "<color=purple>" + input + "</color>"+bodyParts[i];
+                input = "";
             }
         }
         prompt.bodyText.text = bodyWhole;
-        text[1] = bodyWhole;
+        post[1] = bodyWhole;
     }
 }
