@@ -8,6 +8,9 @@ using System.IO;
 
 public class NewsManager : MonoBehaviour
 {
+    //Allow retrieval of random generic/topical buzzwords
+    [SerializeField] BuzzwordsManager BuzzwordsManager;
+
     //The blueprint for the article
     [SerializeField] GameObject articlePrefab;
     //The current article being displayed to the player
@@ -63,11 +66,23 @@ public class NewsManager : MonoBehaviour
         string[] text;
         do
         {
-            text = articleList[Random.Range(0, articleList.Length - 1)].Split(';');
+            text = articleList[Random.Range(1, articleList.Length - 1)].Split(';');
         }
         while (text[0].Equals(article.headText.text));
+
+        updatePost(text);
         
+    }
+
+    void updatePost(string[] text)
+    {
         article.headText.text = text[0];
-        article.bodyText.text = text[1]; 
+        string[] bodyParts = text[1].Split('_');
+        string bodyWhole = bodyParts[0];
+        for (int i = 1; i < bodyParts.Length; i++)
+        {
+            bodyWhole += "<color=red>" + BuzzwordsManager.PickTopical() + "</color>" + bodyParts[i];
+        }
+        article.bodyText.text = bodyWhole;
     }
 }

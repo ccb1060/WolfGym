@@ -5,23 +5,9 @@ using TMPro;
 
 public class NewsController : MonoBehaviour
 {
+    //The body of the post
     public TMP_Text bodyText;
+
+    //The headline of the post
     public TMP_Text headText;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-    public void UpdateText(string article)
-    {
-        string[] texts = article.Split(';');
-        headText.text = texts[0];
-        bodyText.text = texts[1];
-    }
 }
