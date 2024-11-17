@@ -134,6 +134,7 @@ public class GameManager : MonoBehaviour
             maxtime = 5 - playerScore / 10;
             timeUntilChange = maxtime;
         }
+        PlaySound(6);
     }
     /// <summary>
     /// Plays the corresponding audio

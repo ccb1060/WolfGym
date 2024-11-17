@@ -626,7 +626,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24.15
+  m_fontSize: 19.9
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1148,7 +1148,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24.25
+  m_fontSize: 25.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1361,7 +1361,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.7
+  m_fontSize: 34.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2950,9 +2950,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4bddd35b5488abc41b4fbda8964d6262, type: 3}
   - {fileID: 8300000, guid: 11f21108853341e49a64548017f18918, type: 3}
   - {fileID: 8300000, guid: f0a82d1b6e0a6934aa4c60839f07be64, type: 3}
+  - {fileID: 8300000, guid: 33b6d2c0f7c4847468af9dc11e50f0b6, type: 3}
   postManager: {fileID: 479339581}
   field: {fileID: 285970622}
   progressBar: {fileID: 2026317057}
+  xValues: []
   timeUntilChange: 0
   playerScore: 0
   buzzwordsManager: {fileID: 1372787533}
