@@ -7,6 +7,10 @@ using UnityEngine.Windows;
 
 public class GameManager : MonoBehaviour
 {
+    List<AudioSource> sources = new List<AudioSource>();
+
+    [SerializeField] List<AudioClip> audios;
+
     //The post the player is working on
     [SerializeField] NewsManager postManager;
 
@@ -43,6 +47,16 @@ public class GameManager : MonoBehaviour
             postManager.updatePost(field.text);
             field.text = "";
         });
+
+        for (int i = 0; i < audios.Count; i++)
+        {
+            sources.Add(gameObject.AddComponent<AudioSource>());
+            sources[i].clip = audios[i];
+        }
+
+        PlaySound(0);
+
+        
     }
 
     // Update is called once per frame
@@ -54,6 +68,7 @@ public class GameManager : MonoBehaviour
             postManager.changeArticle();
             maxtime = 5 - playerScore / 10;
             timeUntilChange = maxtime;
+            
         }
 
         //Changes the width and color of the progress bar in relation to how long the player has to post
@@ -62,5 +77,10 @@ public class GameManager : MonoBehaviour
 
         if(!inTutorial)
             timeUntilChange -= Time.deltaTime;
+    }
+
+    public void PlaySound(int index)
+    {
+        sources[index].Play();
     }
 }
