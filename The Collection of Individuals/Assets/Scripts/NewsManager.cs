@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 using System.IO;
 using TMPro;
 using UnityEngine.Windows;
+using Unity.Collections.LowLevel.Unsafe;
 
 public class NewsManager : MonoBehaviour
 {
@@ -29,7 +30,6 @@ public class NewsManager : MonoBehaviour
         get { return articleList; }
     }
 
-    List<string> inputWords = new List<string>();
 
     //the current post being worked on
     string[] post;
@@ -50,13 +50,6 @@ public class NewsManager : MonoBehaviour
     public void changeArticle()
     {
         //Picks a random article from the list, rerolling if it gets the same one
-        foreach(string word in inputWords)
-        {
-            gameManager.playerScore += buzzwordsManager.GetScore(word);
-            canvas.IncreaseConnections(buzzwordsManager.GetScore(word));
-            buzzwordsManager.Discover(word);
-        }
-        inputWords.Clear();
         post = articleList[Random.Range(1, articleList.Length - 1)].Split(';');
         buzzwordsManager.PickTopic();
         canvas.SetNotes();
@@ -83,7 +76,9 @@ public class NewsManager : MonoBehaviour
                 bodyWhole += "<color=red>_</color>" + bodyParts[i];
             else
             {
-                inputWords.Add(input);
+                gameManager.playerScore += buzzwordsManager.GetScore(input);
+                canvas.IncreaseConnections(buzzwordsManager.GetScore(input));
+                buzzwordsManager.Discover(input);
                 bodyWhole += "<color=purple>" + input + "</color>"+bodyParts[i];
                 input = "";
             }

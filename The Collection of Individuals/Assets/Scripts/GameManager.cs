@@ -34,8 +34,12 @@ public class GameManager : MonoBehaviour
 
     //Buzzword manager
     [SerializeField] BuzzwordsManager buzzwordsManager;
+    [SerializeField] CanvasRandomizer canvas;
 
-    private int numFailures = 0; 
+    private int numFailures = 0;
+
+    public int quota = 0;
+    private int quotaMult = 0;
 
     private bool inTutorial;
 
@@ -45,7 +49,7 @@ public class GameManager : MonoBehaviour
     {
         maxtime = 30;
         timeUntilChange = maxtime;
-        inTutorial = false;
+        inTutorial = true;
 
         //When the player inputs a string, update the post
         field.onEndEdit.AddListener(delegate 
@@ -128,10 +132,17 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ArticleSuccess()
     {
-        if (true)
+        if(inTutorial)
         {
+            inTutorial = false;
+        }
+        if (playerScore >= quota)
+        {
+            quotaMult++;
+            quota += 3 * quotaMult;
+            canvas.SetQuota(quota);
             postManager.changeArticle();
-            maxtime = 5 - playerScore / 10;
+            maxtime = 30 - playerScore / 10;
             timeUntilChange = maxtime;
         }
     }

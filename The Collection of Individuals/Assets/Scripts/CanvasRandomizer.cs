@@ -17,6 +17,7 @@ public class CanvasRandomizer : MonoBehaviour
     [SerializeField] private TMP_Text topichashtags;
     [SerializeField] private TMP_Text topicwords;
     [SerializeField] private TMP_Text genericwords;
+    [SerializeField] private TMP_Text quota;
 
     [SerializeField] private BuzzwordsManager buzzwordsManager;
 
@@ -99,6 +100,11 @@ public class CanvasRandomizer : MonoBehaviour
                 genericwords.text += word.word.Trim() + "  ";
             }
         }
+    }
+
+    public void SetQuota(int quotaNum)
+    {
+        quota.text = "Quota: " + quotaNum.ToString();
     }
 
     /// <summary>
