@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
         { 
             postManager.updatePost(field.text);
             field.text = "";
+            field.ActivateInputField();
         });
 
         //Creates a new audio source and adds its corresponding clip

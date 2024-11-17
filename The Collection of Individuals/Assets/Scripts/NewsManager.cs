@@ -87,6 +87,7 @@ public class NewsManager : MonoBehaviour
                 inputWords.Add(input);
                 bodyWhole += "<color=purple>" + input + "</color>"+bodyParts[i];
                 input = "";
+                gameManager.PlaySound(2);
             }
         }
         postText.text = bodyWhole;
