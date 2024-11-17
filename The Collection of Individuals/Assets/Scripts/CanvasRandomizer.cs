@@ -42,7 +42,7 @@ public class CanvasRandomizer : MonoBehaviour
         float likes = connections * Random.Range(0.4f, 0.8f);
         float comments = connections * Random.Range(0.05f, 0.5f);
 
-        _connections.text = FormatBigNumbers(connections) + " Connections are Posting:";
+        _connections.text = FormatBigNumbers(connections) + " Connections are Posting";
         _likes.text = FormatBigNumbers(likes);
         _comments.text = FormatBigNumbers(comments);
     }

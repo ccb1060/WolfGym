@@ -3092,6 +3092,7 @@ MonoBehaviour:
   timeUntilChange: 0
   playerScore: 0
   buzzwordsManager: {fileID: 1372787533}
+  quota: 0
 --- !u!4 &1492242290
 Transform:
   m_ObjectHideFlags: 0
@@ -3406,7 +3407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a890244f9a6f8b04b909bfe9a78a1d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _connections: {fileID: 1809226735}
+  _connections: {fileID: 1545401323}
   _likes: {fileID: 1984817589}
   _comments: {fileID: 1760927436}
   _pop_hashtags: {fileID: 1545401323}
