@@ -59,6 +59,7 @@ public class NewsManager : MonoBehaviour
         inputWords.Clear();
         post = articleList[Random.Range(1, articleList.Length - 1)].Split(';');
         buzzwordsManager.PickTopic();
+        canvas.SetNotes();
         List<string> words = new List<string>();
         while(words.Count < 5) 
         {

@@ -317,7 +317,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '# thing # thing # thing # thing # thing'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1148,7 +1148,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.2
+  m_fontSize: 24.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1361,7 +1361,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.1
+  m_fontSize: 36.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1468,7 +1468,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1577,7 +1577,7 @@ MonoBehaviour:
   buzzwordsManager: {fileID: 1372787533}
   gameManager: {fileID: 1492242289}
   postText: {fileID: 379225570}
-  canvas: {fileID: 0}
+  canvas: {fileID: 1648497506}
 --- !u!4 &479339582
 Transform:
   m_ObjectHideFlags: 0
@@ -2053,7 +2053,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2808,7 +2808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a4be2b7e0120d468d34ea80c983332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 1677067812}
   audios:
   - {fileID: 8300000, guid: 443a313422b376544ab5f38641ac25c2, type: 3}
   - {fileID: 8300000, guid: 03359381d96c63240999a51f7007d362, type: 3}
@@ -3008,6 +3007,9 @@ MonoBehaviour:
   _comments: {fileID: 1760927436}
   _pop_hashtags: {fileID: 1545401323}
   topichashtags: {fileID: 29471377}
+  topicwords: {fileID: 965736090}
+  genericwords: {fileID: 421938243}
+  buzzwordsManager: {fileID: 1372787533}
 --- !u!114 &1648497507
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,6 +14,10 @@ public class CanvasRandomizer : MonoBehaviour
     [SerializeField] private TMP_Text _comments;
     [SerializeField] private TMP_Text _pop_hashtags;
     [SerializeField] private TMP_Text topichashtags;
+    [SerializeField] private TMP_Text topicwords;
+    [SerializeField] private TMP_Text genericwords;
+
+    [SerializeField] private BuzzwordsManager buzzwordsManager;
 
     public int connections { get; private set; } = 0;
 
@@ -80,6 +84,26 @@ public class CanvasRandomizer : MonoBehaviour
     {
         topichashtags.text = "";
         topichashtags.text = "#" + words[0].Trim() + " #" + words[1].Trim() + " #" + words[2].Trim() + " #" + words[3].Trim() + " #" + words[4].Trim();
+    }
+
+    public void SetNotes()
+    {
+        topicwords.text = "";
+        genericwords.text = "";
+        foreach(WordClass word in buzzwordsManager.CurrentTopic)
+        {
+            if(word.discovered)
+            {
+                topicwords.text += word.word.Trim() + "  ";
+            }
+        }
+        foreach(WordClass word in buzzwordsManager.Generic)
+        {
+            if(word.discovered)
+            {
+                genericwords.text += word.word.Trim() + "  ";
+            }
+        }
     }
 
     /// <summary>
