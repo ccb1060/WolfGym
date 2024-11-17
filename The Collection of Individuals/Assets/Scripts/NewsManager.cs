@@ -16,8 +16,9 @@ public class NewsManager : MonoBehaviour
     [SerializeField] GameManager gameManager;
 
 
-    //The field that displays the text
+    //The field that displays the post
     [SerializeField] TMP_Text postText;
+
 
     [SerializeField] CanvasRandomizer canvas;
 

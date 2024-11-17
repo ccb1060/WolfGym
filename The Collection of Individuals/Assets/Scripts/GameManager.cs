@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// BUTTON EVENT - The player successfully prolonged their inevitable
     /// </summary>
-    public void ArticleSuccess()
+    public void Post()
     {
         if (true)
         {
