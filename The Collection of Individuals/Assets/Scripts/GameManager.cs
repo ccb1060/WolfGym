@@ -34,14 +34,10 @@ public class GameManager : MonoBehaviour
 
     //Buzzword manager
     [SerializeField] BuzzwordsManager buzzwordsManager;
-    [SerializeField] CanvasRandomizer canvas;
 
-    private int numFailures = 0;
+    private int numFailures = 0; 
 
-    public int quota = 0;
-    private int quotaMult = 0;
-
-    private bool inTutorial;
+    private bool pause;
 
     
     // Start is called before the first frame update
@@ -49,7 +45,7 @@ public class GameManager : MonoBehaviour
     {
         maxtime = 30;
         timeUntilChange = maxtime;
-        inTutorial = true;
+        pause = true;
 
         //When the player inputs a string, update the post
         field.onEndEdit.AddListener(delegate 
@@ -106,7 +102,7 @@ public class GameManager : MonoBehaviour
         progressBar.GetComponent<UnityEngine.UI.Image>().fillAmount = timeUntilChange / maxtime;
         progressBar.GetComponent<UnityEngine.UI.Image>().color = new Color((1 - timeUntilChange / maxtime), 255, 0);
 
-        if(!inTutorial)
+        if(!pause)
             timeUntilChange -= Time.deltaTime;
     }
     
@@ -123,28 +119,27 @@ public class GameManager : MonoBehaviour
         if (numFailures >= 3)
         {
             postManager.EndOfGamePost();
-            inTutorial = true;
+            pause = true;
         }
     }
 
     /// <summary>
     /// BUTTON EVENT - The player successfully prolonged their inevitable
     /// </summary>
-    public void ArticleSuccess()
+    public void Post()
     {
-        if(inTutorial)
+        if (pause)
         {
-            inTutorial = false;
+            pause = false;
         }
-        if (playerScore >= quota)
+
+        if (true)
         {
-            quotaMult++;
-            quota += 3 * quotaMult;
-            canvas.SetQuota(quota);
             postManager.changeArticle();
-            maxtime = 30 - playerScore / 10;
+            maxtime -= playerScore / 10;
             timeUntilChange = maxtime;
         }
+        PlaySound(6);
     }
     /// <summary>
     /// Plays the corresponding audio
