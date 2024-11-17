@@ -51,17 +51,10 @@ public class NewsManager : MonoBehaviour
     public void changeArticle()
     {
         //Picks a random article from the list, rerolling if it gets the same one
-        foreach(string word in inputWords)
-        {
-            gameManager.playerScore += buzzwordsManager.GetScore(word);
-            canvas.IncreaseConnections(buzzwordsManager.GetScore(word));
-            buzzwordsManager.Discover(word);
-        }
-        inputWords.Clear();
         post = articleList[Random.Range(1, articleList.Length - 1)].Split(';');
-
         buzzwordsManager.PickTopic();
         canvas.SetNotes();
+        canvas.SetQuota(gameManager.quota);
         List<string> words = new List<string>();
         while(words.Count < 5) 
         {

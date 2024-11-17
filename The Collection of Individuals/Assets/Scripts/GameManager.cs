@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
 
     private bool pause;
 
+    public int quota = 0;
+    private int quotaMult = 0;
     
     // Start is called before the first frame update
     void Start()
@@ -139,8 +141,10 @@ public class GameManager : MonoBehaviour
             pause = false;
         }
 
-        if (true)
+        if (playerScore >= quota)
         {
+            quotaMult++;
+            quota += 3 * quotaMult;
             postManager.changeArticle();
             maxtime -= playerScore / 10;
             timeUntilChange = maxtime;
