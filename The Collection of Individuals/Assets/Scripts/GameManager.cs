@@ -7,6 +7,10 @@ using UnityEngine.Windows;
 
 public class GameManager : MonoBehaviour
 {
+    List<AudioSource> sources = new List<AudioSource>();
+
+    [SerializeField] List<AudioClip> audios;
+
     //The post the player is working on
     [SerializeField] NewsManager postManager;
 
@@ -39,15 +43,27 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        maxtime = 5;
-        timeUntilChange = 5;
+        maxtime = 30;
+        timeUntilChange = maxtime;
         inTutorial = false;
 
+        //When the player inputs a string, update the post
         field.onEndEdit.AddListener(delegate 
         { 
             postManager.updatePost(field.text);
             field.text = "";
         });
+
+        //Creates a new audio source and adds its corresponding clip
+        for (int i = 0; i < audios.Count; i++)
+        {
+            sources.Add(gameObject.AddComponent<AudioSource>());
+            sources[i].clip = audios[i];
+        }
+
+        PlaySound(0);
+
+        
     }
 
     // Update is called once per frame
@@ -57,10 +73,20 @@ public class GameManager : MonoBehaviour
         if (timeUntilChange < 0)
         {
             postManager.changeArticle();
-            maxtime = 5 - playerScore / 10;
+            maxtime -= playerScore / 10;
             timeUntilChange = maxtime;
 
             ArticleMissed();
+            sources[0].Play();
+        }
+        else if (timeUntilChange < 3)
+        {
+            if (!sources[5].isPlaying)
+            {
+                sources[0].Pause();
+                PlaySound(5);
+            }
+                
         }
 
         //Changes the width and color of the progress bar in relation to how long the player has to post
@@ -70,7 +96,7 @@ public class GameManager : MonoBehaviour
         if(!inTutorial)
             timeUntilChange -= Time.deltaTime;
     }
-
+    
     /// <summary>
     /// The player failed to madlibs the article, and is punished
     /// </summary>
@@ -98,5 +124,20 @@ public class GameManager : MonoBehaviour
             maxtime = 5 - playerScore / 10;
             timeUntilChange = maxtime;
         }
+
+    /// <summary>
+    /// Plays the corresponding audio
+    /// </summary>
+    /// <param name="index"> The index of the sound you want to play, indices are as follows:
+    /// 0 - Music
+    /// 1 - Non-buzzword scored
+    /// 2 - Player Inputted word(small pop noise)
+    /// 3 - Player recieved an X for not being fast enough
+    /// 4 - Generic buzzword scored
+    /// 5 - Player is running out of time(less than three seconds till change)
+    /// </param>
+    public void PlaySound(int index)
+    {
+        sources[index].Play();
     }
 }
