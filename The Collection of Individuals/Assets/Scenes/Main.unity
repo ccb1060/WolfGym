@@ -1148,7 +1148,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24.25
+  m_fontSize: 46.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1361,7 +1361,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.7
+  m_fontSize: 44.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2953,6 +2953,7 @@ MonoBehaviour:
   postManager: {fileID: 479339581}
   field: {fileID: 285970622}
   progressBar: {fileID: 2026317057}
+  xValues: []
   timeUntilChange: 0
   playerScore: 0
   buzzwordsManager: {fileID: 1372787533}
@@ -3847,7 +3848,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Media Consultant Intern @ BigMedia\nConnections: 100k'
+  m_text: Virtual Content Marketing Response intern @ Sycophant INC
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
