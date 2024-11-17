@@ -25,7 +25,7 @@ public class CanvasRandomizer : MonoBehaviour
 
     void Start()
     {
-        _connections.text = "People are Posting:";
+        _connections.text = "Trending Hashtags:";
         _likes.text = "0";
         _comments.text = "0";
     }
