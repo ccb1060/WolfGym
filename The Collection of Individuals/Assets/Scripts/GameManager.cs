@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     //The bar showing how long the player has until the next prompt is generated
     [SerializeField] GameObject progressBar;
 
+    // The list of three xs that determine the end of the game
+    [SerializeField] List<Image> xValues;
+
     //The amount of time the player had to complete their post the moment it appeared 
     float maxtime = 0;
 
@@ -27,6 +30,8 @@ public class GameManager : MonoBehaviour
 
     //Buzzword manager
     [SerializeField] BuzzwordsManager buzzwordsManager;
+
+    private int numFailures = 0; 
 
     private bool inTutorial;
 
@@ -54,6 +59,8 @@ public class GameManager : MonoBehaviour
             postManager.changeArticle();
             maxtime = 5 - playerScore / 10;
             timeUntilChange = maxtime;
+
+            ArticleMissed();
         }
 
         //Changes the width and color of the progress bar in relation to how long the player has to post
@@ -62,5 +69,34 @@ public class GameManager : MonoBehaviour
 
         if(!inTutorial)
             timeUntilChange -= Time.deltaTime;
+    }
+
+    /// <summary>
+    /// The player failed to madlibs the article, and is punished
+    /// </summary>
+    private void ArticleMissed()
+    {
+        // Changes the display of another X to be red
+        xValues[numFailures++].color = Color.HSVToRGB(0, 84, 78);
+
+        // Once the player misses three articles, the game ends
+        if (numFailures >= 3)
+        {
+            postManager.EndOfGamePost();
+            inTutorial = true;
+        }
+    }
+
+    /// <summary>
+    /// BUTTON EVENT - The player successfully prolonged their inevitable
+    /// </summary>
+    private void ArticleSuccess()
+    {
+        if (true)
+        {
+            postManager.changeArticle();
+            maxtime = 5 - playerScore / 10;
+            timeUntilChange = maxtime;
+        }
     }
 }
