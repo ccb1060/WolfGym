@@ -60,8 +60,8 @@ public class GameManager : MonoBehaviour
             sources.Add(gameObject.AddComponent<AudioSource>());
             sources[i].clip = audios[i];
         }
-
-        PlaySound(0);
+        
+        
 
         
     }
@@ -69,6 +69,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!sources[0].isPlaying)
+        {
+            PlaySound(0);
+        }
         //If the player has run out of time, change the post
         if (timeUntilChange < 0)
         {
@@ -78,15 +82,20 @@ public class GameManager : MonoBehaviour
 
             ArticleMissed();
             sources[0].Play();
+            sources[0].volume = 1;
         }
-        else if (timeUntilChange < 3)
+        else if (timeUntilChange < 10)
         {
             if (!sources[5].isPlaying)
             {
-                sources[0].Pause();
+                
                 PlaySound(5);
             }
-                
+
+            //The music fades out as the warning fades in
+            sources[0].volume = timeUntilChange/10;
+            sources[5].volume = 1- timeUntilChange / 10;
+
         }
 
         //Changes the width and color of the progress bar in relation to how long the player has to post
@@ -104,6 +113,7 @@ public class GameManager : MonoBehaviour
     {
         // Changes the display of another X to be red
         xValues[numFailures++].color = Color.HSVToRGB(0, 84, 78);
+        PlaySound(3);
 
         // Once the player misses three articles, the game ends
         if (numFailures >= 3)
