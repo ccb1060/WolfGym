@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Xml.Linq;
 using TMPro;
 using Unity.Burst.CompilerServices;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
@@ -12,6 +13,7 @@ public class CanvasRandomizer : MonoBehaviour
     [SerializeField] private TMP_Text _likes;
     [SerializeField] private TMP_Text _comments;
     [SerializeField] private TMP_Text _pop_hashtags;
+    [SerializeField] private TMP_Text topichashtags;
 
     public int connections { get; private set; } = 0;
 
@@ -72,6 +74,12 @@ public class CanvasRandomizer : MonoBehaviour
         }
 
         return value + character;
+    }
+
+    public void SetHashtags(List<string> words)
+    {
+        topichashtags.text = "";
+        topichashtags.text = "#" + words[0].Trim() + " #" + words[1].Trim() + " #" + words[2].Trim() + " #" + words[3].Trim() + " #" + words[4].Trim();
     }
 
     /// <summary>
