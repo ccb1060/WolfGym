@@ -17,6 +17,7 @@ public class CanvasRandomizer : MonoBehaviour
     [SerializeField] private TMP_Text topichashtags;
     [SerializeField] private TMP_Text topicwords;
     [SerializeField] private TMP_Text genericwords;
+    [SerializeField] private TMP_Text quota;
 
     [SerializeField] private BuzzwordsManager buzzwordsManager;
 
@@ -101,19 +102,16 @@ public class CanvasRandomizer : MonoBehaviour
         }
     }
 
+    public void SetQuota(int quotaNum)
+    {
+        quota.text = "Quota: " + quotaNum.ToString();
+    }
+
     /// <summary>
     /// A temporary button event to quit the game. Can be moved to whereever
     /// </summary>
     public void QuitGame()
     {
         Application.Quit();
-    }
-
-    /// <summary>
-    /// Restarts the scene once the player hits gameover
-    /// </summary>
-    public void ResetGame()
-    {
-        SceneManager.LoadScene(0);
     }
 }

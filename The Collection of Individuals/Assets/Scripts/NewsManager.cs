@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 using System.IO;
 using TMPro;
 using UnityEngine.Windows;
+using Unity.Collections.LowLevel.Unsafe;
 
 public class NewsManager : MonoBehaviour
 {
@@ -30,7 +31,6 @@ public class NewsManager : MonoBehaviour
         get { return articleList; }
     }
 
-    List<string> inputWords = new List<string>();
 
     //the current post being worked on
     string[] post;
@@ -59,6 +59,7 @@ public class NewsManager : MonoBehaviour
         }
         inputWords.Clear();
         post = articleList[Random.Range(1, articleList.Length - 1)].Split(';');
+
         buzzwordsManager.PickTopic();
         canvas.SetNotes();
         List<string> words = new List<string>();
@@ -84,7 +85,9 @@ public class NewsManager : MonoBehaviour
                 bodyWhole += "<color=red>_</color>" + bodyParts[i];
             else
             {
-                inputWords.Add(input);
+                gameManager.playerScore += buzzwordsManager.GetScore(input);
+                canvas.IncreaseConnections(buzzwordsManager.GetScore(input));
+                buzzwordsManager.Discover(input);
                 bodyWhole += "<color=purple>" + input + "</color>"+bodyParts[i];
                 input = "";
                 gameManager.PlaySound(2);
@@ -99,8 +102,8 @@ public class NewsManager : MonoBehaviour
     /// </summary>
     public void EndOfGamePost()
     {
-        // TODO: Add functionality to
-            // post FIRED post
-            // prevent user interation with buzzword input
+        post = articleList[1].Split(';');
+
+        updatePost("");
     }
 }
