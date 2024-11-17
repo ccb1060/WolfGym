@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 using System.IO;
 using TMPro;
 using UnityEngine.Windows;
+using Unity.Collections.LowLevel.Unsafe;
 
 public class NewsManager : MonoBehaviour
 {
@@ -16,8 +17,9 @@ public class NewsManager : MonoBehaviour
     [SerializeField] GameManager gameManager;
 
 
-    //The field that displays the text
+    //The field that displays the post
     [SerializeField] TMP_Text postText;
+
 
     [SerializeField] CanvasRandomizer canvas;
 
@@ -29,7 +31,6 @@ public class NewsManager : MonoBehaviour
         get { return articleList; }
     }
 
-    List<string> inputWords = new List<string>();
 
     //the current post being worked on
     string[] post;
@@ -57,7 +58,8 @@ public class NewsManager : MonoBehaviour
             buzzwordsManager.Discover(word);
         }
         inputWords.Clear();
-        post = articleList[Random.Range(2, articleList.Length - 1)].Split(';');
+        post = articleList[Random.Range(1, articleList.Length - 1)].Split(';');
+
         buzzwordsManager.PickTopic();
         canvas.SetNotes();
         List<string> words = new List<string>();
@@ -83,7 +85,9 @@ public class NewsManager : MonoBehaviour
                 bodyWhole += "<color=red>_</color>" + bodyParts[i];
             else
             {
-                inputWords.Add(input);
+                gameManager.playerScore += buzzwordsManager.GetScore(input);
+                canvas.IncreaseConnections(buzzwordsManager.GetScore(input));
+                buzzwordsManager.Discover(input);
                 bodyWhole += "<color=purple>" + input + "</color>"+bodyParts[i];
                 input = "";
             }

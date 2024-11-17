@@ -626,7 +626,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24.15
+  m_fontSize: 20.6
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1148,7 +1148,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46.65
+  m_fontSize: 26.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1361,7 +1361,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.75
+  m_fontSize: 35.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2950,6 +2950,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4bddd35b5488abc41b4fbda8964d6262, type: 3}
   - {fileID: 8300000, guid: 11f21108853341e49a64548017f18918, type: 3}
   - {fileID: 8300000, guid: f0a82d1b6e0a6934aa4c60839f07be64, type: 3}
+  - {fileID: 8300000, guid: 33b6d2c0f7c4847468af9dc11e50f0b6, type: 3}
   postManager: {fileID: 479339581}
   field: {fileID: 285970622}
   progressBar: {fileID: 2026317057}
@@ -3191,7 +3192,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1492242289}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ArticleSuccess
+        m_MethodName: Post
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
