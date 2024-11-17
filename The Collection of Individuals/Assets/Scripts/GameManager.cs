@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Windows;
 
@@ -128,6 +129,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ArticleSuccess()
     {
+        if (numFailures >= 3)
+        {
+            SceneManager.LoadScene(0);
+        }
+
         if (true)
         {
             postManager.changeArticle();

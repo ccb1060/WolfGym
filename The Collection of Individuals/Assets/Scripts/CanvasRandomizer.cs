@@ -108,12 +108,4 @@ public class CanvasRandomizer : MonoBehaviour
     {
         Application.Quit();
     }
-
-    /// <summary>
-    /// Restarts the scene once the player hits gameover
-    /// </summary>
-    public void ResetGame()
-    {
-        SceneManager.LoadScene(0);
-    }
 }

@@ -57,7 +57,7 @@ public class NewsManager : MonoBehaviour
             buzzwordsManager.Discover(word);
         }
         inputWords.Clear();
-        post = articleList[Random.Range(1, articleList.Length - 1)].Split(';');
+        post = articleList[Random.Range(2, articleList.Length - 1)].Split(';');
         buzzwordsManager.PickTopic();
         canvas.SetNotes();
         List<string> words = new List<string>();
@@ -97,8 +97,8 @@ public class NewsManager : MonoBehaviour
     /// </summary>
     public void EndOfGamePost()
     {
-        // TODO: Add functionality to
-            // post FIRED post
-            // prevent user interation with buzzword input
+        post = articleList[1].Split(';');
+
+        updatePost("");
     }
 }
