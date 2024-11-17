@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     private int numFailures = 0; 
 
-    private bool inTutorial;
+    private bool pause;
 
     
     // Start is called before the first frame update
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     {
         maxtime = 30;
         timeUntilChange = maxtime;
-        inTutorial = false;
+        pause = true;
 
         //When the player inputs a string, update the post
         field.onEndEdit.AddListener(delegate 
@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
         progressBar.GetComponent<UnityEngine.UI.Image>().fillAmount = timeUntilChange / maxtime;
         progressBar.GetComponent<UnityEngine.UI.Image>().color = new Color((1 - timeUntilChange / maxtime), 255, 0);
 
-        if(!inTutorial)
+        if(!pause)
             timeUntilChange -= Time.deltaTime;
     }
     
@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
         if (numFailures >= 3)
         {
             postManager.EndOfGamePost();
-            inTutorial = true;
+            pause = true;
         }
     }
 
@@ -128,10 +128,15 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void Post()
     {
+        if (pause)
+        {
+            pause = false;
+        }
+
         if (true)
         {
             postManager.changeArticle();
-            maxtime = 5 - playerScore / 10;
+            maxtime -= playerScore / 10;
             timeUntilChange = maxtime;
         }
         PlaySound(6);
