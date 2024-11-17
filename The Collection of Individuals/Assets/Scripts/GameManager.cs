@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
 
             ArticleMissed();
             sources[0].Play();
-            sources[0].volume = 1;
+            sources[0].volume = .8f;
         }
         else if (timeUntilChange < 10)
         {
@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
             }
 
             //The music fades out as the warning fades in
-            sources[0].volume = timeUntilChange/10;
+            sources[0].volume = timeUntilChange/10* .8f;
             sources[5].volume = 1- timeUntilChange / 10;
 
         }

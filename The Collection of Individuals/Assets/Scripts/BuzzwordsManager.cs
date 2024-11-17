@@ -39,8 +39,8 @@ public class BuzzwordsManager : MonoBehaviour
         Lists.Add(Generic);
 
         //intialize Business
-        ListReader = new StreamReader("Assets\\TextFiles\\Business.txt");
-        string content = ListReader.ReadToEnd();
+        ListReader = new StreamReader(Application.dataPath + "/Resources/Business.txt");
+        string content = content = ListReader.ReadToEnd();
         string[] words = content.Split(",");
         foreach(string word in words)
         {
@@ -48,7 +48,7 @@ public class BuzzwordsManager : MonoBehaviour
         }
 
         //intialize Education
-        ListReader = new StreamReader("Assets\\TextFiles\\Education.txt");
+        ListReader = new StreamReader(Application.dataPath + "/Resources/Education.txt");
         content = ListReader.ReadToEnd();
         words = content.Split(",");
         foreach (string word in words)
@@ -57,7 +57,7 @@ public class BuzzwordsManager : MonoBehaviour
         }
 
         //intialize Environment
-        ListReader = new StreamReader("Assets\\TextFiles\\Environment.txt");
+        ListReader = new StreamReader(Application.dataPath + "/Resources/Environment.txt");
         content = ListReader.ReadToEnd();
         words = content.Split(",");
         foreach (string word in words)
@@ -66,7 +66,7 @@ public class BuzzwordsManager : MonoBehaviour
         }
 
         //intialize Finance
-        ListReader = new StreamReader("Assets\\TextFiles\\Finance.txt");
+        ListReader = new StreamReader(Application.dataPath + "/Resources/Finance.txt");
         content = ListReader.ReadToEnd();
         words = content.Split(",");
         foreach (string word in words)
@@ -75,7 +75,7 @@ public class BuzzwordsManager : MonoBehaviour
         }
 
         //intialize Games
-        ListReader = new StreamReader("Assets\\TextFiles\\Games.txt");
+        ListReader = new StreamReader(Application.dataPath + "/Resources/Games.txt");
         content = ListReader.ReadToEnd();
         words = content.Split(",");
         foreach (string word in words)
@@ -84,7 +84,7 @@ public class BuzzwordsManager : MonoBehaviour
         }
 
         //intialize Health
-        ListReader = new StreamReader("Assets\\TextFiles\\Health.txt");
+        ListReader = new StreamReader(Application.dataPath + "/Resources/Health.txt");
         content = ListReader.ReadToEnd();
         words = content.Split(",");
         foreach (string word in words)
@@ -93,7 +93,7 @@ public class BuzzwordsManager : MonoBehaviour
         }
 
         //intialize Marketing
-        ListReader = new StreamReader("Assets\\TextFiles\\Marketing.txt");
+        ListReader = new StreamReader(Application.dataPath + "/Resources/Marketing.txt");
         content = ListReader.ReadToEnd();
         words = content.Split(",");
         foreach (string word in words)
@@ -102,7 +102,7 @@ public class BuzzwordsManager : MonoBehaviour
         }
 
         //intialize Technology
-        ListReader = new StreamReader("Assets\\TextFiles\\Technology.txt");
+        ListReader = new StreamReader(Application.dataPath + "/Resources/Technology.txt");
         content = ListReader.ReadToEnd();
         words = content.Split(",");
         foreach (string word in words)
@@ -111,7 +111,7 @@ public class BuzzwordsManager : MonoBehaviour
         }
 
         //intialize generic
-        ListReader = new StreamReader("Assets\\TextFiles\\Generic.txt");
+        ListReader = new StreamReader(Application.dataPath + "/Resources/Generic.txt");
         content = ListReader.ReadToEnd();
         words = content.Split(",");
         foreach (string word in words)
