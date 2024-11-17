@@ -91,4 +91,14 @@ public class NewsManager : MonoBehaviour
         postText.text = bodyWhole;
         post[1] = bodyWhole;
     }
+
+    /// <summary>
+    /// Called after the player misses three articles
+    /// </summary>
+    public void EndOfGamePost()
+    {
+        // TODO: Add functionality to
+            // post FIRED post
+            // prevent user interation with buzzword input
+    }
 }
