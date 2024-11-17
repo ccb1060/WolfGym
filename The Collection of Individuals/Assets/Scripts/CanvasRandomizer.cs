@@ -5,6 +5,7 @@ using TMPro;
 using Unity.Burst.CompilerServices;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class CanvasRandomizer : MonoBehaviour
@@ -23,11 +24,9 @@ public class CanvasRandomizer : MonoBehaviour
 
     void Start()
     {
-        _connections.text = "Virtual Content Marketing Response intern @ BigMedia\n" +
-                            "Connections: 0";
+        _connections.text = "People are Posting:";
         _likes.text = "0";
         _comments.text = "0";
-        _pop_hashtags.text = Random.Range(2.0f, 50.0f).ToString("0.0") + "M New Posts!";
     }
 
     /// <summary>
@@ -41,14 +40,10 @@ public class CanvasRandomizer : MonoBehaviour
 
         float likes = connections * Random.Range(0.4f, 0.8f);
         float comments = connections * Random.Range(0.05f, 0.5f);
-        float pop = Random.Range(2.0f, 50.0f);
 
-        _connections.text = "Media Consultant Intern @ BigMedia\n" +
-                            "Connections: " + FormatBigNumbers(connections);
-
+        _connections.text = FormatBigNumbers(connections) + " Connections are Posting:";
         _likes.text = FormatBigNumbers(likes);
         _comments.text = FormatBigNumbers(comments);
-        _pop_hashtags.text = pop.ToString("0.0") + "M New Posts!";
     }
 
     /// <summary>
@@ -112,5 +107,13 @@ public class CanvasRandomizer : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    /// <summary>
+    /// Restarts the scene once the player hits gameover
+    /// </summary>
+    public void ResetGame()
+    {
+        SceneManager.LoadScene(0);
     }
 }
