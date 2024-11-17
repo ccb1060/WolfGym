@@ -20,6 +20,14 @@ public class NewsManager : MonoBehaviour
     //The field that displays the post
     [SerializeField] TMP_Text postText;
 
+    //The text that displays the hashtag label
+    [SerializeField] TMP_Text hastagHead;
+
+    //The field that displays the hastags
+    [SerializeField] TMP_Text hastags;
+
+    //The field that displays the notes
+    [SerializeField] TMP_Text notepaper;
 
     [SerializeField] CanvasRandomizer canvas;
 
@@ -50,8 +58,8 @@ public class NewsManager : MonoBehaviour
 
     public void changeArticle()
     {
-        //Picks a random article from the list, rerolling if it gets the same one
-        post = articleList[Random.Range(1, articleList.Length - 1)].Split(';');
+        post = articleList[Random.Range(3, articleList.Length - 1)].Split(';');
+
         buzzwordsManager.PickTopic();
         canvas.SetNotes();
         canvas.SetQuota(gameManager.quota);
@@ -97,6 +105,12 @@ public class NewsManager : MonoBehaviour
     {
         post = articleList[1].Split(';');
 
+        notepaper.text = articleList[2].Split(';')[1];
+
+        notepaper.fontSize = 16;
+
+        hastagHead.text = "YOU'RE FIRED!";
+        hastags.text = "#BetterLuckNextTime #PackYourStuff #Ouch";
         updatePost("");
     }
 }

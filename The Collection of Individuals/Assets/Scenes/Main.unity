@@ -1282,7 +1282,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24.25
+  m_fontSize: 25.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1495,7 +1495,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.7
+  m_fontSize: 34.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1711,6 +1711,9 @@ MonoBehaviour:
   buzzwordsManager: {fileID: 1372787533}
   gameManager: {fileID: 1492242289}
   postText: {fileID: 379225570}
+  hastagHead: {fileID: 1545401323}
+  hastags: {fileID: 29471377}
+  notepaper: {fileID: 965736090}
   canvas: {fileID: 1648497506}
 --- !u!4 &479339582
 Transform:
@@ -3088,7 +3091,10 @@ MonoBehaviour:
   postManager: {fileID: 479339581}
   field: {fileID: 285970622}
   progressBar: {fileID: 2026317057}
-  xValues: []
+  xValues:
+  - {fileID: 515645758}
+  - {fileID: 1876787500}
+  - {fileID: 1986621959}
   timeUntilChange: 0
   playerScore: 0
   buzzwordsManager: {fileID: 1372787533}
@@ -3414,7 +3420,7 @@ MonoBehaviour:
   topichashtags: {fileID: 29471377}
   topicwords: {fileID: 965736090}
   genericwords: {fileID: 421938243}
-  quota: {fileID: 323098547}
+  quota: {fileID: 0}
   buzzwordsManager: {fileID: 1372787533}
 --- !u!114 &1648497507
 MonoBehaviour:

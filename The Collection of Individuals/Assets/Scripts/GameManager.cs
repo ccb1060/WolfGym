@@ -123,6 +123,7 @@ public class GameManager : MonoBehaviour
         if (numFailures >= 3)
         {
             postManager.EndOfGamePost();
+            sources[0].Pause();
             pause = true;
         }
     }
