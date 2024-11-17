@@ -116,7 +116,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// BUTTON EVENT - The player successfully prolonged their inevitable
     /// </summary>
-    private void ArticleSuccess()
+    public void ArticleSuccess()
     {
         if (true)
         {
@@ -124,6 +124,7 @@ public class GameManager : MonoBehaviour
             maxtime = 5 - playerScore / 10;
             timeUntilChange = maxtime;
         }
+    }
 
     /// <summary>
     /// Plays the corresponding audio
