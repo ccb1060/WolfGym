@@ -317,7 +317,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '# thing # thing # thing # thing # thing'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1148,7 +1148,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46.65
+  m_fontSize: 24.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1361,7 +1361,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.75
+  m_fontSize: 36.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1468,7 +1468,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1577,7 +1577,7 @@ MonoBehaviour:
   buzzwordsManager: {fileID: 1372787533}
   gameManager: {fileID: 1492242289}
   postText: {fileID: 379225570}
-  canvas: {fileID: 0}
+  canvas: {fileID: 1648497506}
 --- !u!4 &479339582
 Transform:
   m_ObjectHideFlags: 0
@@ -2188,7 +2188,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2953,10 +2953,6 @@ MonoBehaviour:
   postManager: {fileID: 479339581}
   field: {fileID: 285970622}
   progressBar: {fileID: 2026317057}
-  xValues:
-  - {fileID: 515645758}
-  - {fileID: 1876787500}
-  - {fileID: 1986621959}
   timeUntilChange: 0
   playerScore: 0
   buzzwordsManager: {fileID: 1372787533}
@@ -3013,7 +3009,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '4.9M Connections are Posting:'
+  m_text: 4.9M New Posts!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3040,7 +3036,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.35
+  m_fontSize: 62.65
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3056,7 +3052,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 0
+  m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -3274,11 +3270,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a890244f9a6f8b04b909bfe9a78a1d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _connections: {fileID: 1545401323}
+  _connections: {fileID: 1809226735}
   _likes: {fileID: 1984817589}
   _comments: {fileID: 1760927436}
   _pop_hashtags: {fileID: 1545401323}
   topichashtags: {fileID: 29471377}
+  topicwords: {fileID: 965736090}
+  genericwords: {fileID: 421938243}
+  buzzwordsManager: {fileID: 1372787533}
 --- !u!114 &1648497507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3848,7 +3847,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Virtual Content Marketing Response intern @ Sycophants INC
+  m_text: 'Media Consultant Intern @ BigMedia\nConnections: 100k'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

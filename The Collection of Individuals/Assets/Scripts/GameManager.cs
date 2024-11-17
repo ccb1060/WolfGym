@@ -125,7 +125,6 @@ public class GameManager : MonoBehaviour
             timeUntilChange = maxtime;
         }
     }
-
     /// <summary>
     /// Plays the corresponding audio
     /// </summary>
